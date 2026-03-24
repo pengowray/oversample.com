@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oversample - Bat Call Analysis Tool</title>
+    <meta name="description" content="Oversample is a free, open-source bat call viewer and acoustic analysis tool. Visualize spectrograms, identify species, and explore ultrasonic recordings — all in your browser.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23271645'/></svg>">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0e0e12;
+            --surface: #161620;
+            --border: #2a2a3a;
+            --text: #d4d4e0;
+            --text-muted: #8888a0;
+            --accent: #8c7aff;
+            --accent-glow: #a594ff;
+            --accent-dim: #6b5ce7;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--accent-glow); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* --- Header --- */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px 24px 0;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .header-links { display: flex; gap: 24px; font-size: 14px; }
+        .header-links a { color: var(--text-muted); }
+        .header-links a:hover { color: #fff; text-decoration: none; }
+
+        /* --- Hero --- */
+        .hero {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 80px 24px 64px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent-glow), #c4a8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 560px;
+            margin: 0 auto 36px;
+        }
+
+        .cta-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .btn:hover { transform: translateY(-1px); text-decoration: none; }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(140, 122, 255, 0.3);
+        }
+        .btn-primary:hover {
+            background: var(--accent-glow);
+            box-shadow: 0 6px 32px rgba(140, 122, 255, 0.45);
+        }
+
+        .btn-secondary {
+            background: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover { border-color: var(--accent-dim); color: #fff; }
+
+        .hero-note {
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* --- Features --- */
+        .features {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .feature {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .feature h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* --- Divider --- */
+        .divider {
+            max-width: 960px;
+            margin: 0 auto 64px;
+            padding: 0 24px;
+        }
+        .divider hr {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        /* --- How it works --- */
+        .how {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+            text-align: center;
+        }
+
+        .how h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .how > p {
+            color: var(--text-muted);
+            max-width: 520px;
+            margin: 0 auto 40px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            text-align: center;
+        }
+
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--accent-dim);
+            color: #fff;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .steps h4 {
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .steps p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* --- Platforms --- */
+        .platforms {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+            text-align: center;
+        }
+
+        .platforms h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .platforms > p {
+            color: var(--text-muted);
+            max-width: 520px;
+            margin: 0 auto 32px;
+        }
+
+        .platform-list {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .platform-item {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .platform-item strong { color: #fff; display: block; margin-bottom: 2px; }
+
+        /* --- Footer --- */
+        footer {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--text-muted); }
+        .footer-links a:hover { color: #fff; }
+
+        /* --- Responsive --- */
+        @media (max-width: 600px) {
+            .hero { padding: 56px 20px 48px; }
+            .hero p { font-size: 16px; }
+            .btn { padding: 12px 24px; font-size: 15px; }
+            .features { gap: 16px; }
+            .feature { padding: 20px; }
+            header { padding: 16px 20px 0; }
+            .platform-list { gap: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Oversample</div>
+    <nav class="header-links">
+        <a href="#features">Features</a>
+        <a href="https://github.com/pengowray/oversample">GitHub</a>
+        <a href="https://app.oversample.com">Launch App</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>See what <span>bats hear</span></h1>
+    <p>
+        A free, browser-based tool for viewing and analyzing bat echolocation calls.
+        Load a recording, explore the spectrogram, and identify species — no install required.
+    </p>
+    <div class="cta-group">
+        <a href="https://app.oversample.com" class="btn btn-primary">Open Oversample</a>
+        <a href="https://github.com/pengowray/oversample" class="btn btn-secondary">View on GitHub</a>
+    </div>
+    <p class="hero-note">Works in any modern browser. Your files stay on your device.</p>
+</section>
+
+<section class="features" id="features">
+    <div class="feature">
+        <span class="feature-icon" aria-hidden="true">&#x1F50A;</span>
+        <h3>Spectrogram &amp; Waveform</h3>
+        <p>High-resolution spectrogram rendering with multiple color maps, zoom, and pan. Waveform view for time-domain analysis.</p>
+    </div>
+    <div class="feature">
+        <span class="feature-icon" aria-hidden="true">&#x1F3A7;</span>
+        <h3>Listen to Ultrasound</h3>
+        <p>Heterodyne, time expansion, and pitch shift modes let you hear bat calls that are normally beyond human hearing.</p>
+    </div>
+    <div class="feature">
+        <span class="feature-icon" aria-hidden="true">&#x1F4C2;</span>
+        <h3>Multiple Formats</h3>
+        <p>Open WAV, FLAC, OGG, and MP3 files. All decoding happens locally in your browser — nothing is uploaded.</p>
+    </div>
+    <div class="feature">
+        <span class="feature-icon" aria-hidden="true">&#x1F987;</span>
+        <h3>Bat Book</h3>
+        <p>Built-in species reference to help identify calls by region, frequency range, and call shape.</p>
+    </div>
+    <div class="feature">
+        <span class="feature-icon" aria-hidden="true">&#x1F30D;</span>
+        <h3>Xeno-Canto Integration</h3>
+        <p>Browse and stream wildlife recordings from the Xeno-Canto database directly within the app.</p>
+    </div>
+    <div class="feature">
+        <span class="feature-icon" aria-hidden="true">&#x1F512;</span>
+        <h3>Private &amp; Offline</h3>
+        <p>All processing runs client-side. Your audio files never leave your device. Works offline once loaded.</p>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="how">
+    <h2>Get started in seconds</h2>
+    <p>No account, no installation, no upload. Just open and go.</p>
+    <div class="steps">
+        <div>
+            <div class="step-num">1</div>
+            <h4>Open the app</h4>
+            <p>Visit <a href="https://app.oversample.com">app.oversample.com</a> in any modern browser.</p>
+        </div>
+        <div>
+            <div class="step-num">2</div>
+            <h4>Load a recording</h4>
+            <p>Drag and drop a bat call file, or try one of the built-in demo recordings.</p>
+        </div>
+        <div>
+            <div class="step-num">3</div>
+            <h4>Explore</h4>
+            <p>Zoom into the spectrogram, listen in different modes, and compare with known species.</p>
+        </div>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="platforms">
+    <h2>Runs everywhere</h2>
+    <p>Oversample works in the browser and as a native app for more features like microphone recording.</p>
+    <div class="platform-list">
+        <div class="platform-item">
+            <strong>Browser</strong>
+            Chrome, Firefox, Safari, Edge
+        </div>
+        <div class="platform-item">
+            <strong>Windows</strong>
+            Native desktop via Tauri
+        </div>
+        <div class="platform-item">
+            <strong>macOS &amp; Linux</strong>
+            Native desktop via Tauri
+        </div>
+        <div class="platform-item">
+            <strong>Android</strong>
+            With USB mic support
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div>Oversample &mdash; by Pengo Wray</div>
+    <nav class="footer-links">
+        <a href="https://app.oversample.com">Launch App</a>
+        <a href="https://github.com/pengowray/oversample">GitHub</a>
+    </nav>
+</footer>
+
+</body>
+</html>
