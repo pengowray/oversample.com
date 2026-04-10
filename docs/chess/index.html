@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    <title>Chessendo: The Grandmaster Rhythm Game</title>
+    <link rel="stylesheet" href="/chess/main-477173237968c84b.css" integrity="sha384-HYBS0GGwQJ/pGgHlqFdpurA8S83v5Nye3U4K4XUrBGafT9TkRK8dW4ZRC/kMx/jQ"/>
+    
+    
+<script type="module">
+import init, * as bindings from '/chess/cr-web-20a225d191ffb5f2.js';
+const wasm = await init({ module_or_path: '/chess/cr-web-20a225d191ffb5f2_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+<link rel="modulepreload" href="/chess/cr-web-20a225d191ffb5f2.js" crossorigin="anonymous" integrity="sha384-qbjzMqj/VtSpJ1V+HZ3IrW27zu8rghhzeIqHsKcURc8U8xoBCLkxbW2e3U7SBzUk"><link rel="preload" href="/chess/cr-web-20a225d191ffb5f2_bg.wasm" crossorigin="anonymous" integrity="sha384-JS0IqjxX8Kirgh4fA3fOf+Y36Aru+4nmXx5dEKsSaCEZuZXojFwObvcyppDiK3dp" as="fetch" type="application/wasm"></head>
+<body>
+</body>
+</html>
