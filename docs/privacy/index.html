@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy policy - Oversample</title>
+    <meta name="description" content="What Oversample stores on your device, what it sends to other services, what its server logs, and how Google Drive sign-in works.">
+    <link rel="canonical" href="https://oversample.com/privacy">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <a class="logo" href="../"><img src="../about-icon.png" alt="Oversample logo" width="36" height="36" style="vertical-align: middle; margin-right: 8px;">Oversample</a>
+    <nav class="header-links">
+        <a href="../">Home</a>
+        <a href="https://github.com/pengowray/oversample">GitHub</a>
+        <a href="https://app.oversample.com">Launch App</a>
+    </nav>
+</header>
+
+<main class="policy">
+    <h1>Privacy policy</h1>
+    <p class="policy-date">Last updated 17 November 2026</p>
+
+    <p>Oversample is a bat call analysis app. It is a web app at <a href="https://app.oversample.com">app.oversample.com</a>, a desktop app and an Android app.</p>
+    <p>This policy covers the web app, the desktop app, the Android app, the website oversample.com and the Oversample server (api.oversample.com).</p>
+
+    <h2 id="summary">Summary</h2>
+    <ul>
+        <li><strong>If you open or record audio:</strong> Oversample analyses the audio on your device. Oversample does not upload it. No account is needed.</li>
+        <li><strong>If you search for species or recordings:</strong> the search goes to the Oversample server. The server log contains a code made from your IP address. It does not contain the IP address.</li>
+        <li><strong>If you use the &ldquo;Near&rdquo; filter in Find recordings:</strong> &ldquo;Me&rdquo; and &ldquo;Current recording&rdquo; send a position, rounded to about 11 km, to the Oversample server. &ldquo;Anywhere&rdquo; sends no position.</li>
+        <li><strong>If you record with &ldquo;GPS location&rdquo; on (Android):</strong> the app writes the location into the recording file. Anyone you give the file to can read the location.</li>
+        <li><strong>If you choose &ldquo;Sign in with Google&rdquo;:</strong> Oversample saves your annotation files and project files to your own Google Drive. Oversample can see only the files it created there. Sign-in sets cookies.</li>
+        <li><strong>In every case:</strong> Oversample has no analytics, no advertising and no tracking scripts.</li>
+    </ul>
+
+    <nav class="policy-contents" aria-label="Sections">
+        <a href="#device">What stays on your device</a>
+        <a href="#permissions">Microphone, USB audio and location</a>
+        <a href="#google">Google Drive sign-in</a>
+        <a href="#services">Requests to other services</a>
+        <a href="#server">The Oversample server and its logs</a>
+        <a href="#cookies">Cookies, analytics and ads</a>
+        <a href="#choices">Your choices</a>
+        <a href="#changes">Changes to this policy</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <h2 id="device">What stays on your device</h2>
+    <p>Oversample decodes and analyses the audio files you open on your device. Oversample does not upload them to any server. The same is true of microphone recordings, spectrograms, analysis results and species classifier results. The species classifier models run on your device.</p>
+    <p>Annotations and projects are saved on your device. If you sign in with Google, they are also saved in your Google Drive. See <a href="#google">Google Drive sign-in</a>.</p>
+
+    <h3>The web app</h3>
+    <p>The web app stores the following in your browser, for app.oversample.com only.</p>
+    <ul>
+        <li>Settings are stored in the browser's localStorage.</li>
+        <li>Annotation files, project files, downloaded models and cached Xeno-canto species lists are stored in the browser's private file storage for the site (the Origin Private File System).</li>
+        <li>Temporary working copies of audio that the app itself made, such as a denoised copy, are stored in the same private file storage. The app deletes these copies when the file is closed.</li>
+        <li>If you enter your own Xeno-canto API key, the key is stored in the browser's localStorage.</li>
+    </ul>
+
+    <h3>The desktop app and the Android app</h3>
+    <ul>
+        <li>The desktop app and the Android app store settings, annotations, recordings, downloaded models and a cache of Xeno-canto downloads in the app's own data folders on the device.</li>
+        <li>The desktop app can also save an annotation file (.batm) in the same folder as the audio file that the annotations belong to.</li>
+        <li>If you enter your own Xeno-canto API key in the desktop app, the key is stored in a file in the app's configuration folder.</li>
+        <li>The Android app saves finished recordings to the phone's shared storage, in a folder named Recordings/Oversample. The Android app also saves exported files to the phone's shared storage.</li>
+    </ul>
+
+    <h3>Removing what is stored</h3>
+    <ul>
+        <li>Clearing the site data for app.oversample.com in your browser removes what the web app stored.</li>
+        <li>Uninstalling the Android app, or clearing its data in Android's settings, removes what the Android app stored in its own data folders. Recordings and exports in the phone's shared storage stay until you delete them.</li>
+        <li>The desktop app's data stays in the app's data folder and configuration folder until you delete those folders. Their names contain <code>com.oversample.app</code>. Annotation files saved beside audio files stay until you delete them.</li>
+    </ul>
+
+    <h2 id="permissions">Microphone, USB audio and location</h2>
+
+    <h3>Microphone and USB audio</h3>
+    <p>The app asks for microphone permission only when you start listening or recording. On Android, the app also asks for permission to use a USB audio device at that time. The audio is processed on the device and saved only on the device.</p>
+    <p>The Android app shows a notification while it records. The Android app can keep recording in the background while that notification is shown.</p>
+
+    <h3>&ldquo;GPS location&rdquo; (Android)</h3>
+    <p>The &ldquo;GPS location&rdquo; recording setting is off by default. When it is on, the app reads the phone's location once at the start of each recording. The app writes the latitude and longitude into the metadata of that recording file. Oversample does not send the location anywhere. Anyone you give the file to can read the location.</p>
+
+    <h3>&ldquo;Privacy zones&rdquo; (Android)</h3>
+    <p>In &ldquo;Privacy zones&rdquo; you can add the Wi-Fi network that the phone is connected to. While the phone is on one of those networks, the app does not add the location to recordings. The saved network names stay on the phone. Android requires the location permission before an app can read the Wi-Fi network name.</p>
+
+    <h3>&ldquo;Include phone model&rdquo; (Android)</h3>
+    <p>The &ldquo;Include phone model&rdquo; setting is on by default. It writes the phone's manufacturer and model into the metadata of each recording file. You can turn it off in Privacy settings.</p>
+
+    <h3>Location for regions and countries</h3>
+    <p>Some features ask for your location to pick a region or country. Examples are the bat species list for your region and the region for a species classifier. The app works out the country on the device from a built-in map. The app keeps the position in memory until the app is closed. The app does not send the position anywhere, except when you use the &ldquo;Near&rdquo; filter in Find recordings.</p>
+
+    <h3>The &ldquo;Near&rdquo; filter in Find recordings</h3>
+    <ul>
+        <li>&ldquo;Anywhere&rdquo; is the default. It sends no position.</li>
+        <li>&ldquo;Me&rdquo; uses your device's location.</li>
+        <li>&ldquo;Current recording&rdquo; uses the GPS position stored in the open recording file.</li>
+    </ul>
+    <p>For &ldquo;Me&rdquo; and &ldquo;Current recording&rdquo;, the app rounds the latitude and longitude to one decimal place, which is about 11 km. The app sends the rounded position to the Oversample server as part of the search.</p>
+
+    <h3>Map links</h3>
+    <p>When a recording has a location, the app shows links to OpenStreetMap and Google Maps. If you click one of these links, that site receives the coordinates. The app sends nothing to these sites unless you click a link.</p>
+
+    <h2 id="google">Google Drive sign-in</h2>
+    <p>Google sign-in is optional. You start it by choosing &ldquo;Sign in with Google&rdquo; in the app's settings.</p>
+
+    <h3>What sign-in is for</h3>
+    <p>Sign-in saves your annotation files (.batm) and project files (.batproj) to your own Google Drive, so that you can use them on another device.</p>
+
+    <h3>The permission Oversample asks for</h3>
+    <p>Oversample asks for one permission: <code>https://www.googleapis.com/auth/drive.file</code>. This permission lets Oversample see and change only the files that Oversample itself created in your Drive, or that you open with Oversample. Oversample cannot see, list or read your other Drive files.</p>
+
+    <h3>What Oversample accesses</h3>
+    <ul>
+        <li>Oversample accesses an &ldquo;Oversample&rdquo; folder that the app creates in your Drive, and the annotation files and project files inside that folder.</li>
+        <li>Oversample reads the email address and display name of the signed-in Google account from Google Drive. The app shows them so that you can see which account is connected.</li>
+    </ul>
+
+    <h3>How Oversample uses this data</h3>
+    <p>Oversample uses this data only to save, load and update those files, and to show the connected account. Oversample does not use this data for advertising. Oversample does not use this data to train AI or machine learning models. Oversample does not sell this data.</p>
+
+    <h3>Where this data is stored</h3>
+    <ul>
+        <li>File contents go directly between your browser or app and Google Drive. File contents do not pass through the Oversample server.</li>
+        <li>The email address and display name are shown in the app. They are not stored on the Oversample server.</li>
+    </ul>
+
+    <h3>How the sign-in works</h3>
+    <p>The Oversample server (api.oversample.com) handles the sign-in with Google. The Oversample server has no user database.</p>
+    <ul>
+        <li>When you sign in, Google gives the Oversample server a refresh token. A refresh token is a long-lived credential that can be exchanged for short-lived access tokens.</li>
+        <li>The server puts the refresh token inside an encrypted cookie and sends the cookie to your browser. The cookie is set by api.oversample.com. The refresh token is stored only in that cookie. The server keeps no copy.</li>
+        <li>When the app needs a new access token, your browser sends the cookie to the Oversample server. The server decrypts the cookie, asks Google for a short-lived access token, and returns the access token to the app.</li>
+        <li>The Oversample server does not keep the refresh token or the access token after the request.</li>
+        <li>Access tokens are held only in the app's memory.</li>
+    </ul>
+
+    <h3>Sharing</h3>
+    <p>Oversample does not share or transfer Google user data to anyone. The developer does not read your Drive files.</p>
+
+    <h3>Removing access</h3>
+    <ul>
+        <li>&ldquo;Sign out&rdquo; in the app revokes the token with Google.</li>
+        <li>You can also remove Oversample's access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+        <li>Files that are already saved stay in the &ldquo;Oversample&rdquo; folder in your Drive until you delete them. You can delete that folder in Google Drive at any time.</li>
+    </ul>
+
+    <h3>Google API Services User Data Policy</h3>
+    <p>Oversample's use and transfer of information received from Google APIs, including Google Workspace scopes, will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+    <h2 id="services">Requests to other services</h2>
+    <p>Every request to another service gives that service your IP address and the usual browser details, such as the browser type. Oversample does not control what those services log.</p>
+    <ul>
+        <li><strong>GitHub Pages.</strong> GitHub Pages hosts oversample.com, app.oversample.com and archive.oversample.com (demo recordings). GitHub receives your IP address when you load them. The web app loads the list of demo recordings when it starts.</li>
+        <li><strong>jsDelivr.</strong> If archive.oversample.com fails, the app loads demo recordings from jsDelivr (cdn.jsdelivr.net) instead.</li>
+        <li><strong>Xeno-canto, with your own API key.</strong> Searches and audio downloads go from your device directly to xeno-canto.org, and include your key.</li>
+        <li><strong>Xeno-canto, without a key.</strong> You can choose to use the Oversample server instead. The Oversample server then makes the request to Xeno-canto with its own key, and Xeno-canto does not see your IP address.</li>
+        <li><strong>Searches that use the Oversample server.</strong> Species name search, country lists and Find recordings use the Oversample server, with or without your own key. Species lists are loaded from the Oversample server when it has them. These requests contain what you search for, the filters you choose, and your browser's language list. The language list is used to show species names in your language.</li>
+        <li><strong>Other collections in Find recordings.</strong> Find recordings also lists recordings from other collections. When you open one of these recordings, the audio is downloaded from Xeno-canto, from archive.org directly, or through the Oversample server from the host that holds the file (for example iNaturalist or Observation.org).</li>
+        <li><strong>Wikimedia Commons.</strong> If you search for or load a recording from Wikimedia Commons or Wikipedia, the app sends the request directly to Wikimedia's servers (commons.wikimedia.org, wikipedia.org, upload.wikimedia.org).</li>
+        <li><strong>Hugging Face.</strong> When you download a species classifier (BirdNET, BattyBirdNET or Perch) in Call detection, or the denoiser model for Denoised copy, the files are downloaded from Hugging Face (huggingface.co). Small label files and region files for a classifier are downloaded when you run the classifier. Your audio is not sent. The models run on your device.</li>
+        <li><strong>Links to other sites.</strong> The app has links to Xeno-canto pages, licence pages and reference sources for the bat book. These links send nothing until you click them.</li>
+    </ul>
+
+    <h2 id="server">The Oversample server and its logs</h2>
+
+    <h3>What the server logs</h3>
+    <p>The Oversample server writes one log line for each request. The log line contains:</p>
+    <ul>
+        <li>the time of the request;</li>
+        <li>the path requested, without the search text or other parameters. The path of an audio request contains the number of the recording, and the path of a species list request contains the group, such as bats;</li>
+        <li>the response status and size;</li>
+        <li>how long the request took;</li>
+        <li>a 12-character code that the server makes by hashing your IP address together with a secret value.</li>
+    </ul>
+    <p>The IP address itself is not written to the log. The same IP address gives the same code, so requests from one address can be linked to each other in the log.</p>
+    <p>When the server has to fetch a Xeno-canto search from Xeno-canto, because the search was not already cached, the server also logs the search text in a separate line.</p>
+    <p><span class="todo">TODO: state how long server logs are kept</span></p>
+
+    <h3>What the server keeps apart from logs</h3>
+    <ul>
+        <li>The server keeps IP addresses in memory for a short time, to limit how many requests one address can make. These IP addresses are not written to disk.</li>
+        <li>The server caches Xeno-canto search results for 24 hours. The server caches audio files until the cache is full. These caches hold data from Xeno-canto and the other collections, and are not linked to who asked for it.</li>
+    </ul>
+
+    <h3>What the server passes on</h3>
+    <p>The server does not pass your IP address on to Xeno-canto or to other hosts that it fetches from.</p>
+
+    <h3>How the logs are used</h3>
+    <p>The logs are used to keep the server running and to stop abuse. The logs are not shared.</p>
+
+    <h3>Where the server runs</h3>
+    <p>The server runs on a virtual machine at Oracle Cloud.</p>
+
+    <h2 id="cookies">Cookies, analytics and ads</h2>
+    <ul>
+        <li>oversample.com and the app set no cookies, except the Google sign-in cookies described in <a href="#google">Google Drive sign-in</a>. Those cookies exist only if you sign in with Google.</li>
+        <li>Oversample has no analytics, no tracking scripts, no advertising and no crash reporting service.</li>
+        <li>The app's scripts are served from the app's own site, not from third-party hosts.</li>
+    </ul>
+
+    <h2 id="choices">Your choices</h2>
+    <ul>
+        <li>You can use Oversample without signing in, without a Xeno-canto key, and without giving microphone or location permission. The features that need them will not work.</li>
+        <li>You can turn &ldquo;GPS location&rdquo; and &ldquo;Include phone model&rdquo; on or off in the Android app's settings.</li>
+        <li>You can leave the &ldquo;Near&rdquo; filter on &ldquo;Anywhere&rdquo; to send no position.</li>
+        <li>You can sign out of Google in the app, or remove Oversample's access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. You can delete the &ldquo;Oversample&rdquo; folder in Google Drive.</li>
+        <li>You can remove a saved Xeno-canto key in the app.</li>
+        <li>You can delete what the app stored on your device. See <a href="#device">What stays on your device</a>.</li>
+        <li>You can ask what the server log holds about you, or ask for it to be deleted. See <a href="#contact">Contact</a>. The log holds only the code made from your IP address, so the developer needs the IP address you had at the time to find your log lines.</li>
+    </ul>
+
+    <h2 id="changes">Changes to this policy</h2>
+    <p>Changes are published on this page with a new &ldquo;Last updated&rdquo; date. The history of this page is public at <a href="https://github.com/pengowray/oversample.com">github.com/pengowray/oversample.com</a>.</p>
+    <p>If the way Oversample uses Google user data changes, the app will ask you to agree again before it uses the data in the new way.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>Oversample is made by Pengo Wray.</p>
+    <p>For questions and requests, open an issue at <a href="https://github.com/pengowray/oversample/issues">github.com/pengowray/oversample/issues</a>. Issues are public, so do not put private details in an issue.</p>
+    <p><span class="todo">TODO: add a private contact method, such as an email address</span></p>
+</main>
+
+<footer>
+    <div>Oversample by Pengo Wray</div>
+    <nav class="footer-links">
+        <a href="../">Home</a>
+        <a href="https://app.oversample.com">Launch App</a>
+        <a href="https://github.com/pengowray/oversample">GitHub</a>
+    </nav>
+</footer>
+
+</body>
+</html>
