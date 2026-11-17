@@ -38,7 +38,7 @@
         <li><strong>If you use the &ldquo;Near&rdquo; filter in Find recordings:</strong> &ldquo;Me&rdquo; and &ldquo;Current recording&rdquo; send a position, rounded to about 11 km, to the Oversample server. &ldquo;Anywhere&rdquo; sends no position.</li>
         <li><strong>If you record with &ldquo;GPS location&rdquo; on (Android):</strong> the app writes the location into the recording file. Anyone you give the file to can read the location.</li>
         <li><strong>If you choose &ldquo;Sign in with Google&rdquo;:</strong> Oversample saves your annotation files and project files to your own Google Drive. Oversample can see only the files it created there. Sign-in sets cookies.</li>
-        <li><strong>In every case:</strong> Oversample has no analytics, no advertising and no tracking scripts.</li>
+        <li><strong>In every case:</strong> Oversample has no advertising, no tracking scripts and no analytics service from another company. The Oversample server keeps a log of requests, which is also used to count how the app is used.</li>
     </ul>
 
     <nav class="policy-contents" aria-label="Sections">
@@ -184,7 +184,7 @@
     </ul>
     <p>The IP address itself is not written to the log. The same IP address gives the same code, so requests from one address can be linked to each other in the log.</p>
     <p>When the server has to fetch a Xeno-canto search from Xeno-canto, because the search was not already cached, the server also logs the search text in a separate line.</p>
-    <p><span class="todo">TODO: state how long server logs are kept</span></p>
+    <p>The logs are kept with no set end date.</p>
 
     <h3>What the server keeps apart from logs</h3>
     <ul>
@@ -196,7 +196,7 @@
     <p>The server does not pass your IP address on to Xeno-canto or to other hosts that it fetches from.</p>
 
     <h3>How the logs are used</h3>
-    <p>The logs are used to keep the server running and to stop abuse. The logs are not shared.</p>
+    <p>The logs are used to keep the server running, to stop abuse, and to count how the app is used, such as how many searches are made and which recordings are asked for most. The logs are not shared.</p>
 
     <h3>Where the server runs</h3>
     <p>The server runs on a virtual machine at Oracle Cloud.</p>
@@ -204,7 +204,7 @@
     <h2 id="cookies">Cookies, analytics and ads</h2>
     <ul>
         <li>oversample.com and the app set no cookies, except the Google sign-in cookies described in <a href="#google">Google Drive sign-in</a>. Those cookies exist only if you sign in with Google.</li>
-        <li>Oversample has no analytics, no tracking scripts, no advertising and no crash reporting service.</li>
+        <li>Oversample has no tracking scripts, no advertising, no crash reporting service and no analytics service from another company. Usage is counted only from the server logs described above.</li>
         <li>The app's scripts are served from the app's own site, not from third-party hosts.</li>
     </ul>
 
