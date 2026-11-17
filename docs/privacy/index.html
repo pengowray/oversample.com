@@ -111,7 +111,7 @@
     <p>When a recording has a location, the app shows links to OpenStreetMap and Google Maps. If you click one of these links, that site receives the coordinates. The app sends nothing to these sites unless you click a link.</p>
 
     <h2 id="google">Google Drive sign-in</h2>
-    <p>Google sign-in is optional. You start it by choosing &ldquo;Sign in with Google&rdquo; in the app's settings.</p>
+    <p>Google sign-in is optional. It is available in the web app (app.oversample.com). You start it by choosing &ldquo;Sign in with Google&rdquo; in the app's settings.</p>
 
     <h3>What sign-in is for</h3>
     <p>Sign-in saves your annotation files (.batm) and project files (.batproj) to your own Google Drive, so that you can use them on another device.</p>
@@ -130,15 +130,17 @@
 
     <h3>Where this data is stored</h3>
     <ul>
-        <li>File contents go directly between your browser or app and Google Drive. File contents do not pass through the Oversample server.</li>
-        <li>The email address and display name are shown in the app. They are not stored on the Oversample server.</li>
+        <li>File contents go directly between your browser and Google Drive. File contents do not pass through the Oversample server.</li>
+        <li>The email address and display name are shown in the app. They are not sent to the Oversample server.</li>
+        <li>The app keeps a record in your browser's storage of the files it last saw in your Drive: Google's ID for each file, the file's version, and a short code made from its contents. The record is labelled with the account's email address. The app uses the record to tell which copy of a file is newer. The record stays in your browser and is replaced when a different account signs in.</li>
     </ul>
 
     <h3>How the sign-in works</h3>
     <p>The Oversample server (api.oversample.com) handles the sign-in with Google. The Oversample server has no user database.</p>
     <ul>
         <li>When you sign in, Google gives the Oversample server a refresh token. A refresh token is a long-lived credential that can be exchanged for short-lived access tokens.</li>
-        <li>The server puts the refresh token inside an encrypted cookie and sends the cookie to your browser. The cookie is set by api.oversample.com. The refresh token is stored only in that cookie. The server keeps no copy.</li>
+        <li>The server puts the refresh token inside an encrypted cookie and sends the cookie to your browser. The cookie is set by api.oversample.com and lasts 180 days, after which you sign in again. The refresh token is stored only in that cookie. The server keeps no copy.</li>
+        <li>While you are signing in, the server sets a second encrypted cookie that lasts at most 10 minutes. It holds the values that let the server check that Google's answer belongs to the sign-in you started.</li>
         <li>When the app needs a new access token, your browser sends the cookie to the Oversample server. The server decrypts the cookie, asks Google for a short-lived access token, and returns the access token to the app.</li>
         <li>The Oversample server does not keep the refresh token or the access token after the request.</li>
         <li>Access tokens are held only in the app's memory.</li>
@@ -149,9 +151,10 @@
 
     <h3>Removing access</h3>
     <ul>
-        <li>&ldquo;Sign out&rdquo; in the app revokes the token with Google.</li>
+        <li>&ldquo;Sign out&rdquo; in the app revokes the token with Google and deletes the cookie.</li>
         <li>You can also remove Oversample's access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
         <li>Files that are already saved stay in the &ldquo;Oversample&rdquo; folder in your Drive until you delete them. You can delete that folder in Google Drive at any time.</li>
+        <li>If you delete a project in the app while signed in, the app moves that project's file to the trash in your Drive.</li>
     </ul>
 
     <h3>Google API Services User Data Policy</h3>
