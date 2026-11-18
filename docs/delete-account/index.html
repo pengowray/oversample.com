@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete your account and data - Oversample</title>
+    <meta name="description" content="How to remove a Google sign-in from Oversample and delete the data connected with it.">
+    <link rel="canonical" href="https://oversample.com/delete-account">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <a class="logo" href="../"><img src="../about-icon.png" alt="Oversample logo" width="36" height="36" style="vertical-align: middle; margin-right: 8px;">Oversample</a>
+    <nav class="header-links">
+        <a href="../">Home</a>
+        <a href="https://github.com/pengowray/oversample">GitHub</a>
+        <a href="https://app.oversample.com">Launch App</a>
+    </nav>
+</header>
+
+<main class="policy">
+    <h1>Delete your Oversample account and data</h1>
+    <p class="policy-date">Last updated 18 November 2026</p>
+
+    <p>Oversample is a bat call analysis app made by Pengo Wray. This page shows how to remove your Google sign-in from Oversample and delete the data connected with it. You can do every step from a web browser, without opening the app.</p>
+
+    <h2 id="account">What an Oversample account is</h2>
+    <p>Oversample has no accounts of its own. The only sign-in is the optional &ldquo;Sign in with Google&rdquo;. It lets the app save your annotation files and project files to your own Google Drive.</p>
+    <p>The Oversample server has no user database. It does not receive your email address, your name or your files.</p>
+
+    <h2 id="steps">How to delete your account and data</h2>
+    <ol>
+        <li><strong>Remove Oversample's access to your Google account.</strong> Open <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>, choose Oversample, and remove its access. After this, Oversample cannot read or save files in your Google Drive.</li>
+        <li><strong>Delete the files in your Google Drive.</strong> In <a href="https://drive.google.com">Google Drive</a>, delete the folder named &ldquo;Oversample&rdquo;. It holds your annotation files (.batm) and project files (.batproj). Skip this step if you want to keep them.</li>
+        <li><strong>Ask for your server log lines to be deleted.</strong> Email <a href="mailto:privacy@oversample.com">privacy@oversample.com</a>. The log does not contain your email address or your Google account, so include the IP address you used. See <a href="#kept">Server log</a> below.</li>
+    </ol>
+
+    <h2 id="kept">What is deleted and what is kept</h2>
+    <ul>
+        <li><strong>Oversample's access to your Google account.</strong> Deleted in step 1. &ldquo;Sign out&rdquo; in the app also removes it.</li>
+        <li><strong>Annotation files and project files in your Google Drive.</strong> Deleted in step 2. They stay in your Drive until you delete them.</li>
+        <li><strong>Copies on your device.</strong> The app keeps copies of your annotations and projects on your device. They stay until you clear the site data for app.oversample.com in your browser, or uninstall the app. See <a href="../privacy/#device">What stays on your device</a>.</li>
+        <li><strong>Sign-in cookie (web app).</strong> The web app keeps the sign-in in a cookie set by api.oversample.com. &ldquo;Sign out&rdquo; deletes the cookie, and so does clearing your browser's cookies for api.oversample.com. Otherwise the cookie expires after 180 days. After step 1 the cookie no longer gives access to your Drive.</li>
+        <li><strong>Server log.</strong> The Oversample server logs each request with a code made from your IP address. The log does not contain your IP address, your email address or your Google account. The log is kept with no set end date. Your log lines are deleted if you ask by email (step 3). See <a href="../privacy/#server">The Oversample server and its logs</a>.</li>
+    </ul>
+
+    <h2 id="contact">Contact</h2>
+    <p>For deletion requests and questions, email <a href="mailto:privacy@oversample.com">privacy@oversample.com</a>.</p>
+    <p>The full <a href="../privacy/">privacy policy</a> describes everything Oversample stores and sends.</p>
+</main>
+
+<footer>
+    <div>Oversample by Pengo Wray</div>
+    <nav class="footer-links">
+        <a href="../">Home</a>
+        <a href="../privacy/">Privacy</a>
+        <a href="https://app.oversample.com">Launch App</a>
+        <a href="https://github.com/pengowray/oversample">GitHub</a>
+    </nav>
+</footer>
+
+</body>
+</html>
